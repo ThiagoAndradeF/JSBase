@@ -7,4 +7,4 @@ const obj= {max: 50,  min:40} // sendo possível instanciar com o uso de {min e 
 console.log(rand(obj)) 
 console.log(rand({min: 955}))
 console.log(rand({}))
-// console.log(rand()// não funciona, pois não atribuiu valores para a função
+// console.log(rand())// não funciona, pois não atribuiu valores para a função, e é possível desestruturar algo seme strutura
