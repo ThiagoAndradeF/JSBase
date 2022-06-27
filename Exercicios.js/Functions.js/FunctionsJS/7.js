@@ -5,15 +5,19 @@
 // que os resultados sejam iguais. Caso o delta seja negativo, retorne, ao invés do vetor, um string com a frase:
 // “Delta é negativo”.
 
-equacionar=(a,b,c)=>{
-    let x1;
-    let x2;
-    a*(x1)**2 + b*x1 + c
-    a*(x2)**2 + b*x2 + c 
-    for(i=100,1<100,i++){
-    if(x1+x2==-b/a && x1*x2==c/a && x1!=x2){
-        return(console.log("valor de x1"+x1+"\nvalor de x2" + x2))
-    }
+
+bascara=(ax2,bx,c)=>{
+    resultados=[]
+    let delta= (bx**2) -  (4*ax2*c) 
+    if(delta<0){
+        return "O delta é negativo"
+    }   
+    x1= (-bx+ Math.sqrt(delta))/(2*ax2)
+    x2= (-bx- Math.sqrt(delta))/(2*ax2)
+    resultados.push(x1)
+    resultados.push(x2)
+
+    return resultados
 }
-}
-equacionar(3,-5, 12)
+console.log(bascara(1, 3, 2))
+console.log(bascara(3, 1, 2))
