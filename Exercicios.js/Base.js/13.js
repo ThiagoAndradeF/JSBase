@@ -1,4 +1,6 @@
-function somenteNumero(array){
-    return array.filter(elemento=> typeof elemento== "number")   
+const arrayNumeros = function (array){
+    const apenasNumeros = a => typeof a === "number" 
+    return array.filter(apenasNumeros)
 }
-console.log(somenteNumero([10,20,"nunu"]))
+
+console.log(arrayNumeros([10,20,30,"leleco", "hiperativo", true ]))
