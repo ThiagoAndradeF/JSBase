@@ -1,12 +1,42 @@
-const door = 3003
+const porta = 3003
+
 const express = require('express')
 const app = express()
-app.get('/produtos', (req, res, next)=>{
-    res.send ( {nome: 'Notebook', preco: 123.34})// converte para JSON
-    //.send é usado para enviar algo , nesse caso uma resposta
-    //ao user o use ao inves do get, ele aceita qualquer requisição, não so a get
+const bodyParser = require('body-parser')
+const database = require('./database')
+
+app.use(bodyParser.urlencoded({ extended: true }))
+
+app.get('/produtos', (req, res, next) => {
+    res.send(database.getProdutos())
 })
 
-app.listen(door, ()=> { 
-    console.log(`Servidor está  executando na porta ${door}. `) 
+app.get('/produtos/:id', (req, res, next) => {
+    res.send(database.getProduto(req.params.id))
+})
+
+app.post('/produtos', (req, res, next) => {
+    const produto = database.salvarProduto({
+        nome: req.body.nome,
+        preco: req.body.preco
+    })
+    res.send(produto) // JSON
+})
+
+app.put('/produtos/:id', (req, res, next) => {
+    const produto = database.salvarProduto({
+        id: req.params.id,
+        nome: req.body.nome,
+        preco: req.body.preco
+    })
+    res.send(produto) // JSON
+})
+
+app.delete('/produtos/:id', (req, res, next) => {
+    const produto = database.excluirProduto(req.params.id)
+    res.send(produto) // JSON
+})
+
+app.listen(porta, () => {
+    console.log(`Servidor está executando na porta ${porta}.`)
 })
