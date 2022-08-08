@@ -31,7 +31,14 @@
         <button>Pesquisar</button>
     </form>
     <script>
-        // ...
+        console.log(document.forms)//HTML colection
+        console.log(document.forms[0])//form 
+        console.log(document.getElementsByName('pesquisa'))//Nodelist[form]
+        console.log(document.pesquisa)//form
+        console.log(pesquisa.q)// input com atributo q
+        document.pesquisa.q.value = 'Linux Brasil'//escreve no input direto 'Linux Brasil'
+        document.pesquisa.hl.value= 'en-us'// seleciona automaticamente Inglês(Americano)
+        console.log(document.pesquisa.hl.selectedIndex)// seleciona o index que está selecionado a partir desta consulta que é 1
     </script>
 </body>
 
