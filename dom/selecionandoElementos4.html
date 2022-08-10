@@ -22,7 +22,41 @@
         <p>Fim</p>
     </div>
     <script>
-        // ...
+        function log(){
+            console.log(this)
+        }
+
+        
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        Node.prototype.log  = log
+        NodeList.prototype.log = log
+
+        const list = document.querySelector('div ul')
+        list.parentNode.log()///show the parent element (div)
+        list.childNodes.log()//[text, li, text, li, text, li, text]//gera efeito colateral,apesar de mostrar os filhos
+        
+        const first = list.firstChild
+        first.log()//type of text (#text)
+        first.nextSibling.log()//show the next element (li)
+
+        const last = list.lastChild
+        last.log()
+        last.previousSibling.log()
+
+        list.children.log()
+        list.firstElementChild.log()
+        list.lastElementChild.log()
+
+        list.parentNode.previousSibling.log() 
+        list.parentNode.nextSibling.log() 
+
+        document.querySelectorAll('div ul li').log()///easiest way to select item
+
+        
+    
+
+
     </script>
 </body>
 
