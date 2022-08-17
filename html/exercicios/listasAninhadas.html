@@ -3,28 +3,28 @@
 </style>
 
 <ul class="tree">
-        <li>Beckend
+        <li><span wm-folder>Beckend </span>
             <ul>
-                <button><li class="toggler">app</button>
+                <li><span wm-folder>app</span>
                 <ul>
-                    <li class="container">produto.js</li>
-                    <li class="container">usuario.js</li>
-                    <li class="container">venda.js</li>
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda.js</li>
                  </ul>
-            <li>config
-                <ul class="toggler">
-                    <li class="container">banco.js</li>
-                    <li class="container">rotas.js</li>
-                    <li class="container">servidor.js</li>
+                 <li><span wm-folder>config</span>
+                <ul>
+                    <li>banco.js</li>
+                    <li>rotas.js</li>
+                    <li>servidor.js</li>
                 </ul>   
             </ul>
-        <li>Frontend
+            <li><span wm-folder>Frontend</span>
             <ul>
-                <li>public
-                    <ul class="toggler">
-                        <li class="container">app.css</li>
-                        <li class="container">app.js</li>
-                        <li class="container">index.html</li>
+                <li><span wm-folder>public</span>
+                    <ul>
+                        <li>app.css</li>
+                        <li>app.js</li>
+                        <li>index.html</li>
                     </ul>
                 </li>
             </ul>  
@@ -33,9 +33,13 @@
 </ul>
 <link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
 <script>
-    const splash= document.querySelector('.toggler')
-    splash.addEventListener('click', function(){
-    document.querySelector('.container').classList.toggle("sumiu")})
+    document.querySelectorAll('[wm-folder]').forEach(folder=>{
+        folder.onclick= function(e){
+            const ul = folder.nextElementSibling //selecionar elementos a baixo
+            const d  = ul.style.display// determinar uma variável como display dos próximos elementos da ul
+            ul.style.display = d ===  'none' ? 'block' : 'none' // se o ul.style.display estiver none se clicar vira block e vice versa
+        }
+    })
 
 
 </script>
